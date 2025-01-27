@@ -8,22 +8,25 @@ class DemoExample1{
 		for(int i=0;i<arr1.Length;i++){
 			arr1[i]=int.Parse(Console.ReadLine());
 		}
-		Console.WriteLine("Enter Size of second array");
-		int[] arr2 = new int[int.Parse(Console.ReadLine())];
-		Console.WriteLine("Enter array values of given size");
-		for(int i=0;i<arr2.Length;i++){
-			arr2[i]=int.Parse(Console.ReadLine());
-		}
-		Console.WriteLine("Common Array elements are: ");
-		foreach(int x in FindCommonElements(arr1, arr2)){
-			Console.Write(x+" ");
-		}
+		SwapZerosAndOnes(arr1);
+
+		// Console.WriteLine("Enter Size of second array");
+		// int[] arr2 = new int[int.Parse(Console.ReadLine())];
+		// Console.WriteLine("Enter array values of given size");
+		// for(int i=0;i<arr2.Length;i++){
+		// 	arr2[i]=int.Parse(Console.ReadLine());
+		// }
+		// Console.WriteLine("Common Array elements are: ");
+		// foreach(int x in FindCommonElements(arr1, arr2)){
+		// 	Console.Write(x+" ");
+		// }
 		//ReverseArray(arr);
 		//MoveZerosToEnd(arr);
-		/*Console.WriteLine("After moving zero to end");
-		for(int i=0;i<arr.Length;i++){
-			Console.Write(arr[i]+" ");		
+		Console.WriteLine("After moving one to end");
+		for(int i=0;i<arr1.Length;i++){
+			Console.Write(arr1[i]+" ");		
 		}
+		/*
 		Console.WriteLine("Enter Range");
 		int range = int.Parse(Console.ReadLine());
 		Console.WriteLine("Missing Number :"+FindMissingNumber(arr,range));
@@ -75,18 +78,19 @@ class DemoExample1{
 		}
 
 	}
-	public static void MoveZerosToEnd(int[] arr){
+	public static void SwapZerosAndOnes(int[] arr){
 		int i=0,j=arr.Length-1;
 		while(i<j){
-			if(arr[i]==0 && arr[j]!=0){
-				arr[i]=arr[j];
-				arr[j]=0;
+			if(arr[i]==0){
 				i++;
-				j--;
-			}else if(arr[j]==0){
+			}else if(arr[j]==1){
 				j--;		
 			}else{
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 				i++;
+				j--;
 			}
 		}	
 	}
@@ -116,6 +120,21 @@ class DemoExample1{
 				
 	}
 
+	public static void MoveZerosToEnd(int[] arr){
+		int i=0,j=arr.Length-1;
+		while(i<j){
+			if(arr[i]==0 && arr[j]!=0){
+				arr[i]=arr[j];
+				arr[j]=0;
+				i++;
+				j--;
+			}else if(arr[j]==0){
+				j--;		
+			}else{
+				i++;
+			}
+		}	
+	}
 
 	
 }
