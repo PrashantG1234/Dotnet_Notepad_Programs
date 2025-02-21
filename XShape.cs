@@ -1,7 +1,7 @@
 using System;
 public class XShape{
     public static void Main(){
-        // for half hash patter
+        // for half hash pattern
         for(int i=0;i<4;i++){
             //for initial space 
             for(int j=0;j<i;j++){
@@ -28,11 +28,11 @@ public class XShape{
         //for another half hash pattern
          for(int i=0;i<4;i++){
             //for initial space 
-            for(int j=3;j>i;j--){
+            for(int j=i-1;j>i;j--){
                 Console.Write(" ");
             }
             //for initial hashes
-            for(int j=4;j>i;j--){
+            for(int j=i-1;j>i;j--){
                 Console.Write("#");
             }
             //for secondary spaces

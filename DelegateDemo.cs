@@ -7,19 +7,25 @@ class ArithOperations{
     public void sub(int a,int b){
         Console.WriteLine("subtraction is :"+(a-b));
     }
-    public void mul(int a,int b){
-        Console.WriteLine("mul is :"+(a*b));
-    }
+    
 }
 class DelegateDemo{
-    public static void  Main(){
-        ArithOperations ao = new ArithOperations();
-        ArithmeticDelegate ad1 = new ArithmeticDelegate(ao.sum);
+    static void mul(int a,int b){
+        Console.WriteLine("mul is :"+(a*b));
+    } 
+    static void Main(string []args){
+        ArithmeticDelegate ad1 = new ArithmeticDelegate(new ArithOperations().sum);
         ad1(2,3);
-        ArithmeticDelegate ad2 = new ArithmeticDelegate(ao.sub);
-        ad2(9,3);
-        ArithmeticDelegate ad3 = new ArithmeticDelegate(ao.mul);
-        ad3(4,5);
-        
+        //using normal function
+        ArithmeticDelegate ad2 = mul;
+        ad2(4,5);
+        //anonymous function taking parameter as a and b
+        ArithmeticDelegate ad4 = delegate(int a,int b){
+            Console.WriteLine(a*b);
+        };
+        ad4(2,3);
+        // using lambda operator
+        ArithmeticDelegate ad3 = (a,b)=> Console.WriteLine(a+" "+b);
+        ad3(2,3);
     }
 }
